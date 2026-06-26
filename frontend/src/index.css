@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #163832;
+  --color-sage: #A8BFA8;
+  --color-warm-ivory: #F7F4EF;
+  --color-cream: #FAF8F5;
+  --color-charcoal: #1E1E1E;
+  --color-gold: #D6B97B;
+  
+  --color-forest-dark: #0F241B;
+  --color-surface-dark: #162E23;
+  --color-sand: #EAE6DF;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-warm-ivory text-charcoal transition-colors duration-300 antialiased;
+    background-image: radial-gradient(at 0% 0%, rgba(168, 191, 168, 0.12) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(214, 185, 123, 0.08) 0px, transparent 50%);
+    min-height: 100vh;
+  }
+  
+  .dark body {
+    @apply bg-forest-dark text-sand;
+    background-image: radial-gradient(at 0% 0%, rgba(22, 46, 35, 0.4) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(214, 185, 123, 0.05) 0px, transparent 50%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-sage/40 rounded-full hover:bg-sage/60 transition-colors;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-sage/20 hover:bg-sage/40;
+  }
+}
+
+/* Premium Natural Elegance Utility Classes */
+
+.premium-card {
+  @apply bg-white border border-forest/8 shadow-[0_4px_20px_-4px_rgba(28,67,50,0.02)] rounded-[18px] p-6 transition-all duration-300;
+}
+.dark .premium-card {
+  @apply bg-surface-dark border-white/5 shadow-none;
+}
+
+.premium-card-hover {
+  @apply hover:shadow-[0_8px_30px_-6px_rgba(28,67,50,0.04)] hover:border-forest/15 hover:-translate-y-0.5 transition-all duration-300;
+}
+.dark .premium-card-hover {
+  @apply hover:border-white/10 hover:bg-surface-dark/85;
+}
+
+.premium-input {
+  @apply w-full px-5 py-3.5 bg-cream/40 border border-forest/10 rounded-xl text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-2 focus:ring-forest/50 focus:border-forest/60 transition-all duration-200 text-sm;
+}
+.dark .premium-input {
+  @apply bg-forest-dark/40 border-white/10 text-sand placeholder-sand/40 focus:ring-gold/50 focus:border-gold/60;
+}
+
+.premium-btn-primary {
+  @apply px-6 py-3 bg-forest hover:bg-forest/90 text-white font-medium rounded-full shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-95 transition-all duration-250 cursor-pointer disabled:opacity-50 disabled:pointer-events-none text-sm text-center inline-block;
+}
+.dark .premium-btn-primary {
+  @apply bg-gold text-forest-dark hover:bg-gold/90 hover:scale-[1.01] active:scale-95;
+}
+
+.premium-btn-secondary {
+  @apply px-6 py-3 bg-cream/80 hover:bg-cream border border-forest/8 text-forest font-medium rounded-full active:scale-95 transition-all duration-250 cursor-pointer disabled:opacity-50 disabled:pointer-events-none text-sm text-center inline-block;
+}
+.dark .premium-btn-secondary {
+  @apply bg-surface-dark border-white/8 text-sand hover:bg-surface-dark/80;
+}
+
+.premium-btn-danger {
+  @apply px-6 py-3 bg-rose-700 hover:bg-rose-600 text-white font-medium rounded-full active:scale-95 transition-all duration-250 cursor-pointer text-sm text-center inline-block;
+}
+.dark .premium-btn-danger {
+  @apply bg-rose-900/60 hover:bg-rose-800 text-rose-200 border border-rose-800/40;
+}
+
+.premium-transition {
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Premium glass hover utility */
+.premium-glass-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-glass-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s ease;
+  pointer-events: none;
+}
+
+.premium-glass-hover:hover::after {
+  left: 125%;
+}
+
